@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": ["**/*.test.tsx", "**/*.stories.tsx", "cypress", "node_modules", "dist"],
+    "compilerOptions": {
+      "declaration": true,
+      "outDir": "dist"
+    }
+  }
+  

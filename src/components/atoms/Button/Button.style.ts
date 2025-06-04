@@ -27,7 +27,7 @@ export const buttonStyles = cva(
           hover:bg-primary-hover
           focus-visible:ring-primary
           [&>svg]:text-foreground
-      `,
+        `,
         secondary: `
           text-secondary
           border

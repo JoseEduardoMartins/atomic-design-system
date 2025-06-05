@@ -1,5 +1,5 @@
 {
-  "name": "my-design-system",
+  "name": "@joseeduardomartins/my-design-system",
   "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",

@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx --no-install commitlint --edit "$1" || {
+  echo "\n🚫 Commit message inválida! Use o padrão Conventional Commits."
+  echo "✅ Exemplo: feat(login): adicionar funcionalidade de login"
+  echo "ℹ️ Dicas: https://www.conventionalcommits.org/pt-br/v1.0.0/"
+  exit 1
+}

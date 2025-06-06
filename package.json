@@ -1,7 +1,10 @@
 {
-  "name": "@joseeduardomartins/my-design-system",
+  "name": "my-design-system",
   "version": "1.0.0",
   "private": false,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -19,9 +22,6 @@
     "preview": "vite preview",
     "commit": "cz",
     "semantic-release": "semantic-release"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -1,3 +1,17 @@
+## [1.0.1](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.0...v1.0.1) (2025-06-06)
+
+
+### Bug Fixes
+
+* ajusta acesso do repositorio ([4c05866](https://github.com/JoseEduardoMartins/my-design-system/commit/4c058660e259250c3f6b2dd058aa36c809b33e13))
+* ajusta nome do projeto, colocando escopo ([ec7088a](https://github.com/JoseEduardoMartins/my-design-system/commit/ec7088a2f8a2c46aeae42442a089e639b5472744))
+* ajusta npm rc ([73ef707](https://github.com/JoseEduardoMartins/my-design-system/commit/73ef707273d0c57900b599145ee273623a6bd0bb))
+* ajusta release ([a05d221](https://github.com/JoseEduardoMartins/my-design-system/commit/a05d221482a0eb7660539766b9442fc1147ad6ea))
+* ajusta releaserc ([1a067fb](https://github.com/JoseEduardoMartins/my-design-system/commit/1a067fb123136b24786208799b86d8a1c711972d))
+* ajusta releaserc ([1086fac](https://github.com/JoseEduardoMartins/my-design-system/commit/1086fac92841fc13ad431ccb7bca938beaf56522))
+* publish npm repository ([f4d6b81](https://github.com/JoseEduardoMartins/my-design-system/commit/f4d6b8152efbcbd19088788f977ddb038e591f68))
+* remove o npmrc ([e2995af](https://github.com/JoseEduardoMartins/my-design-system/commit/e2995af889a2fdd59a6085b9bc008f5f7288973e))
+
 # 1.0.0 (2025-06-05)
 
 

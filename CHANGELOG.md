@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.2...v1.0.3) (2025-06-14)
+
+
+### Bug Fixes
+
+* adiciona escopo e torna repositorio restrito ([ed291b0](https://github.com/JoseEduardoMartins/my-design-system/commit/ed291b0fdcb9b186008d4993a908283f83616769))
+
 ## [1.0.2](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.1...v1.0.2) (2025-06-14)
 
 

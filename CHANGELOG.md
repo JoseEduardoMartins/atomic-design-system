@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.1...v1.0.2) (2025-06-14)
+
+
+### Bug Fixes
+
+* remove o escopo ([ad369bc](https://github.com/JoseEduardoMartins/my-design-system/commit/ad369bc61cf6ac9d89838bf72735beff98da787f))
+
 ## [1.0.1](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.0...v1.0.1) (2025-06-06)
 
 

@@ -1,9 +1,9 @@
 {
-  "name": "my-design-system",
-  "version": "1.0.1",
+  "name": "@joseeduardomartins/my-design-system",
+  "version": "1.0.0",
   "private": false,
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

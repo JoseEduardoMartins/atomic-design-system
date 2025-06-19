@@ -1,0 +1,181 @@
+[33mcommit c7a3b6ceaf88cdf19354cc13d7b163bb1bfe6066[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: semantic-release-bot <semantic-release-bot@martynus.net>
+Date:   Thu Jun 19 15:25:12 2025 +0000
+
+    chore(release): 1.1.0 [skip ci]
+    
+    * adiciona o build no release ([d0784e2](https://github.com/JoseEduardoMartins/atomic-design-system/commit/d0784e283368d8ad366faad31696bb510f882388))
+    * configura build do vite para biblioteca ([e624fc1](https://github.com/JoseEduardoMartins/atomic-design-system/commit/e624fc1cdc9ef31851c5d6e26f2ec63ae6f2ae79))
+
+[33mcommit b8be24cde165eae68723fc8dec61675a521592ee[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 19 19:52:12 2025 -0300
+
+    chore: atualiza nome do pacote para escopo da organização
+
+[33mcommit 546520a479591a900c5c1921f8deeb2f923cac28[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 19 12:24:43 2025 -0300
+
+    feat: configura build do vite para biblioteca
+
+[33mcommit 729bf3410741fb62df1a4b66e3ac3b0e9b785be5[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 19 12:16:32 2025 -0300
+
+    feat: adiciona o build no release
+
+[33mcommit 46c481a56107306cdd1f57809079f50254139f7f[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Sat Jun 14 21:58:51 2025 -0300
+
+    refactor: muda o nome do pacote npm
+
+[33mcommit 88b8de6a0ab93ee4348e5330bd5a20bd089343f2[m[33m ([m[1;33mtag: v1.0.3[m[33m)[m
+Author: semantic-release-bot <semantic-release-bot@martynus.net>
+Date:   Sat Jun 14 23:50:16 2025 +0000
+
+    chore(release): 1.0.3 [skip ci]
+    
+    ## [1.0.3](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.2...v1.0.3) (2025-06-14)
+    
+    ### Bug Fixes
+    
+    * adiciona escopo e torna repositorio restrito ([ed291b0](https://github.com/JoseEduardoMartins/my-design-system/commit/ed291b0fdcb9b186008d4993a908283f83616769))
+
+[33mcommit ed291b0fdcb9b186008d4993a908283f83616769[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Sat Jun 14 20:49:38 2025 -0300
+
+    fix: adiciona escopo e torna repositorio restrito
+
+[33mcommit ae5d99330bacdadbad6251b8aa21c72978f68fcd[m[33m ([m[1;33mtag: v1.0.2[m[33m)[m
+Author: semantic-release-bot <semantic-release-bot@martynus.net>
+Date:   Sat Jun 14 23:41:45 2025 +0000
+
+    chore(release): 1.0.2 [skip ci]
+    
+    ## [1.0.2](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.1...v1.0.2) (2025-06-14)
+    
+    ### Bug Fixes
+    
+    * remove o escopo ([ad369bc](https://github.com/JoseEduardoMartins/my-design-system/commit/ad369bc61cf6ac9d89838bf72735beff98da787f))
+
+[33mcommit ad369bc61cf6ac9d89838bf72735beff98da787f[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Sat Jun 14 20:41:15 2025 -0300
+
+    fix: remove o escopo
+
+[33mcommit 6e57fdca92be5d4bc9f7d7f4703aa104daa280d1[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Sat Jun 14 17:46:39 2025 -0300
+
+    refactor: melhora o packege
+
+[33mcommit c08c8b9aff68c9c7c57e51aedd1f2985695162a4[m[33m ([m[1;33mtag: v1.0.1[m[33m)[m
+Author: semantic-release-bot <semantic-release-bot@martynus.net>
+Date:   Fri Jun 6 02:39:02 2025 +0000
+
+    chore(release): 1.0.1 [skip ci]
+    
+    ## [1.0.1](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.0...v1.0.1) (2025-06-06)
+    
+    ### Bug Fixes
+    
+    * ajusta acesso do repositorio ([4c05866](https://github.com/JoseEduardoMartins/my-design-system/commit/4c058660e259250c3f6b2dd058aa36c809b33e13))
+    * ajusta nome do projeto, colocando escopo ([ec7088a](https://github.com/JoseEduardoMartins/my-design-system/commit/ec7088a2f8a2c46aeae42442a089e639b5472744))
+    * ajusta npm rc ([73ef707](https://github.com/JoseEduardoMartins/my-design-system/commit/73ef707273d0c57900b599145ee273623a6bd0bb))
+    * ajusta release ([a05d221](https://github.com/JoseEduardoMartins/my-design-system/commit/a05d221482a0eb7660539766b9442fc1147ad6ea))
+    * ajusta releaserc ([1a067fb](https://github.com/JoseEduardoMartins/my-design-system/commit/1a067fb123136b24786208799b86d8a1c711972d))
+    * ajusta releaserc ([1086fac](https://github.com/JoseEduardoMartins/my-design-system/commit/1086fac92841fc13ad431ccb7bca938beaf56522))
+    * publish npm repository ([f4d6b81](https://github.com/JoseEduardoMartins/my-design-system/commit/f4d6b8152efbcbd19088788f977ddb038e591f68))
+    * remove o npmrc ([e2995af](https://github.com/JoseEduardoMartins/my-design-system/commit/e2995af889a2fdd59a6085b9bc008f5f7288973e))
+
+[33mcommit 73ef707273d0c57900b599145ee273623a6bd0bb[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 23:38:31 2025 -0300
+
+    fix: ajusta npm rc
+
+[33mcommit 4c058660e259250c3f6b2dd058aa36c809b33e13[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 23:34:56 2025 -0300
+
+    fix: ajusta acesso do repositorio
+
+[33mcommit ec7088a2f8a2c46aeae42442a089e639b5472744[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 20:09:27 2025 -0300
+
+    fix: ajusta nome do projeto, colocando escopo
+
+[33mcommit 1a067fb123136b24786208799b86d8a1c711972d[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 20:02:00 2025 -0300
+
+    fix: ajusta releaserc
+
+[33mcommit 1086fac92841fc13ad431ccb7bca938beaf56522[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 19:42:49 2025 -0300
+
+    fix: ajusta releaserc
+
+[33mcommit e2995af889a2fdd59a6085b9bc008f5f7288973e[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 19:38:07 2025 -0300
+
+    fix: remove o npmrc
+
+[33mcommit a05d221482a0eb7660539766b9442fc1147ad6ea[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 19:29:22 2025 -0300
+
+    fix: ajusta release
+
+[33mcommit b4f2cf89a0aff5e860f0d62633e9cee3c22d4136[m
+Merge: f4d6b81 d71e826
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 19:08:15 2025 -0300
+
+    Merge branch 'main' of github.com:JoseEduardoMartins/my-design-system
+
+[33mcommit f4d6b8152efbcbd19088788f977ddb038e591f68[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Thu Jun 5 19:05:11 2025 -0300
+
+    fix: publish npm repository
+
+[33mcommit d71e826ac73debdd00f11f713a1b72d78db25915[m[33m ([m[1;33mtag: v1.0.0[m[33m)[m
+Author: semantic-release-bot <semantic-release-bot@martynus.net>
+Date:   Thu Jun 5 02:06:41 2025 +0000
+
+    chore(release): 1.0.0 [skip ci]
+    
+    # 1.0.0 (2025-06-05)
+    
+    ### Features
+    
+    * ajusta release ([5768d46](https://github.com/JoseEduardoMartins/my-design-system/commit/5768d46606a4e57c08230beadbc53e70531162f4))
+    * ajusta release ([313d1a7](https://github.com/JoseEduardoMartins/my-design-system/commit/313d1a7805bffa0f3f3155b81021049510f4e896))
+    * ajusta release ([1e45b9a](https://github.com/JoseEduardoMartins/my-design-system/commit/1e45b9a4ef9c392e6a0efac36930eb73918e7fa2))
+    * **commitlint:** add commit lint with conventional commit ([39aeadb](https://github.com/JoseEduardoMartins/my-design-system/commit/39aeadb275a9d6b52ec5e81e6a05394d9eb777cb))
+    * first shot ([2fc72d1](https://github.com/JoseEduardoMartins/my-design-system/commit/2fc72d1550124420c36d8d4833af7257f13e062e))
+    * **label:** add label component ([d1fa800](https://github.com/JoseEduardoMartins/my-design-system/commit/d1fa800bf383366950604669390dc2855f3f67ae))
+    * **semantic-release:** add semantic-release in project ([719e4a6](https://github.com/JoseEduardoMartins/my-design-system/commit/719e4a6020126c431623aa2f7f58a24a76d91830))
+    * **title:** add title component ([1b1f94e](https://github.com/JoseEduardoMartins/my-design-system/commit/1b1f94e6353eb877929f3bd5ace51426f4f8ddb3))
+
+[33mcommit 5768d46606a4e57c08230beadbc53e70531162f4[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Wed Jun 4 23:06:09 2025 -0300
+
+    feat: ajusta release
+
+[33mcommit 313d1a7805bffa0f3f3155b81021049510f4e896[m
+Author: José Eduardo Martins <m4rt1ns.jose@gmail.com>
+Date:   Wed Jun 4 23:00:52 2025 -0300
+
+    feat: ajusta release
+
+[33mcommit 1e45b9a4ef9c392e6a0efac36930eb73918e7fa

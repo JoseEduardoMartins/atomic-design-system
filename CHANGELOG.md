@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.1...v1.1.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* força nova versão ([fd1df07](https://github.com/JoseEduardoMartins/atomic-design-system/commit/fd1df0748897065e3f835cbfe05c61e046f7b64e))
+* força nova versão ([a840e0e](https://github.com/JoseEduardoMartins/atomic-design-system/commit/a840e0eb96e93caaa8dd179e5b14f87716c142a5))
+
 ## [1.1.1](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.0...v1.1.1) (2025-06-19)
 
 

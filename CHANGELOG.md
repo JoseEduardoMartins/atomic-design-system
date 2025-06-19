@@ -3,6 +3,15 @@
 
 ### Bug Fixes
 
+* força nova versão após erro de 1.1.1 ([ad06022](https://github.com/JoseEduardoMartins/atomic-design-system/commit/ad060224b58da6aa2eadbbc5fe497262e4c9feab))
+* força nova versão após erro de 1.1.1 ([ff06953](https://github.com/JoseEduardoMartins/atomic-design-system/commit/ff06953b5486083b67246faf6da47f0417a2ec90))
+* força nova versão após erro de publicação ([a5fea23](https://github.com/JoseEduardoMartins/atomic-design-system/commit/a5fea23145879876f056366e7ce557233eb41a8f))
+
+## [1.1.1](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.0...v1.1.1) (2025-06-19)
+
+
+### Bug Fixes
+
 * força nova versão após erro de publicação ([a5fea23](https://github.com/JoseEduardoMartins/atomic-design-system/commit/a5fea23145879876f056366e7ce557233eb41a8f))
 
 # [1.1.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.0.3...v1.1.0) (2025-06-19)

@@ -1,6 +1,19 @@
 # [1.1.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.0.3...v1.1.0) (2025-06-19)
 
 
+### Bug Fixes
+
+* força nova versão após erro de tag ([7a78cfa](https://github.com/JoseEduardoMartins/atomic-design-system/commit/7a78cfaa2e48998320ef428df0324b4ff632b3bb))
+
+
+### Features
+
+* adiciona o build no release ([729bf34](https://github.com/JoseEduardoMartins/atomic-design-system/commit/729bf3410741fb62df1a4b66e3ac3b0e9b785be5))
+* configura build do vite para biblioteca ([546520a](https://github.com/JoseEduardoMartins/atomic-design-system/commit/546520a479591a900c5c1921f8deeb2f923cac28))
+
+# [1.1.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.0.3...v1.1.0) (2025-06-19)
+
+
 ### Features
 
 * adiciona o build no release ([729bf34](https://github.com/JoseEduardoMartins/atomic-design-system/commit/729bf3410741fb62df1a4b66e3ac3b0e9b785be5))

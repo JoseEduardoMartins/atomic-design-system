@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.0.3...v1.1.0) (2025-06-19)
+
+
+### Features
+
+* adiciona o build no release ([d0784e2](https://github.com/JoseEduardoMartins/atomic-design-system/commit/d0784e283368d8ad366faad31696bb510f882388))
+* configura build do vite para biblioteca ([e624fc1](https://github.com/JoseEduardoMartins/atomic-design-system/commit/e624fc1cdc9ef31851c5d6e26f2ec63ae6f2ae79))
+
 ## [1.0.3](https://github.com/JoseEduardoMartins/my-design-system/compare/v1.0.2...v1.0.3) (2025-06-14)
 
 

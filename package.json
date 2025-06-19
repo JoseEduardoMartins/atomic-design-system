@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "@jose-eduardo-martins/atomic-design-system",
   "version": "1.0.3",
+=======
+  "name": "atomic-design-system",
+  "version": "1.1.0",
+>>>>>>> 8593098 (chore(release): 1.1.0 [skip ci])
   "private": false,
   "publishConfig": {
     "access": "public"

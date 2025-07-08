@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Atomic Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema de design modular baseado em React, TypeScript e Vite, estruturado segundo o padrão Atomic Design. O objetivo é fornecer uma base escalável e reutilizável de componentes para acelerar o desenvolvimento de interfaces consistentes e acessíveis.
 
-Currently, two official plugins are available:
+## Guia Rápido
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Instalação
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install # ou yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Rodando o projeto em modo desenvolvimento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+### Rodando os testes
+
+```bash
+npm test
+```
+
+### Lint e formatação
+
+```bash
+npm run lint
+```
+
+### Como contribuir
+
+1. Crie uma branch a partir da `main`.
+2. Faça suas alterações seguindo o padrão de componentes e estilos do projeto.
+3. Adicione testes e documentação para novos componentes.
+4. Abra um Pull Request explicando suas mudanças.
+
+## Exemplo de Uso de um Componente
+
+```tsx
+import { Button } from 'src/components/atoms/Button';
+
+export function App() {
+  return <Button onClick={() => alert('Olá!')}>Clique aqui</Button>;
+}
+```
+
+---
+
+Para detalhes sobre arquitetura, padrões de design e extensão dos componentes, consulte a documentação técnica em [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md).

@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.2.0...v1.3.0) (2025-07-08)
+
+
+### Features
+
+* **storybook:** adiciona stories avançados, suporte a temas e addons (a11y, controls, viewport, backgrounds) ([4c30957](https://github.com/JoseEduardoMartins/atomic-design-system/commit/4c30957686a35e743c0a73d3d0f17a8e541e319e))
+
 # [1.2.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.3...v1.2.0) (2025-07-08)
 
 

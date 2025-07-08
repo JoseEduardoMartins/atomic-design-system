@@ -65,6 +65,55 @@ Button/
   index.ts           # Reexportação
 ```
 
+## Exemplos de Componentes
+
+### Exemplo de Molecule: InputWithLabel
+
+Componente que combina um Label e um input controlado, promovendo reutilização e acessibilidade.
+
+```
+InputWithLabel/
+  InputWithLabel.tsx      # Implementação do componente
+  InputWithLabel.test.tsx # Testes unitários cobrindo renderização, interação e acessibilidade
+  index.ts                # Reexportação
+```
+
+**Exemplo de uso:**
+
+```tsx
+<InputWithLabel
+  label="Nome"
+  value={nome}
+  onChange={(e) => setNome(e.target.value)}
+  placeholder="Digite seu nome"
+/>
+```
+
+### Exemplo de Organism: SimpleForm
+
+Componente que integra InputWithLabel e Button, formando um formulário controlado e testando a integração entre componentes.
+
+```
+SimpleForm/
+  SimpleForm.tsx      # Implementação do componente
+  SimpleForm.test.tsx # Testes de integração e fluxo de formulário
+  index.ts            # Reexportação
+```
+
+**Exemplo de uso:**
+
+```tsx
+<SimpleForm />
+```
+
+## Práticas de Testes
+
+- **Cobertura:** Todos os componentes principais (atoms, molecules, organisms) possuem testes unitários cobrindo renderização, interação, props opcionais e integração.
+- **Acessibilidade:** Os testes utilizam queries como `getByLabelText`, `getByRole` e matchers do `@testing-library/jest-dom` para garantir acessibilidade.
+- **Edge cases:** São testados casos alternativos, como props opcionais e estados de erro.
+- **Helpers:** Funções utilitárias possuem cobertura total de testes.
+- **Integração:** Organisms testam a integração entre componentes menores.
+
 ---
 
 Para dúvidas ou sugestões, contribua via Pull Request ou abra uma issue no repositório.

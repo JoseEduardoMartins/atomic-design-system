@@ -50,3 +50,5 @@ export function App() {
 ---
 
 Para detalhes sobre arquitetura, padrões de design e extensão dos componentes, consulte a documentação técnica em [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md).
+
+<!-- manutenção: trigger semantic-release para nova versão -->

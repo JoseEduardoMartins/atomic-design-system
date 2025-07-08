@@ -20,8 +20,9 @@ Bem-vindo à documentação completa do Atomic Design System. Aqui você encontr
 
 - **[Guia de Contribuição](./CONTRIBUTING.md)** - Como contribuir, padrões de código e workflow
 
-### 📝 Histórico
+### 📝 Histórico e Releases
 
+- **[Processo de Release](./RELEASE.md)** - Como funciona o release automatizado
 - **[Changelog](./CHANGELOG.md)** - Histórico completo de mudanças e releases
 
 ## 🎯 Navegação Rápida
@@ -39,9 +40,10 @@ Bem-vindo à documentação completa do Atomic Design System. Aqui você encontr
 
 ### Para Mantenedores
 
-1. **Releases**: [Changelog](./CHANGELOG.md)
-2. **Padrões**: [Arquitetura e Padrões](./ARQUITETURA.md)
-3. **Workflow**: [Guia de Contribuição](./CONTRIBUTING.md)
+1. **Releases**: [Processo de Release](./RELEASE.md)
+2. **Histórico**: [Changelog](./CHANGELOG.md)
+3. **Padrões**: [Arquitetura e Padrões](./ARQUITETURA.md)
+4. **Workflow**: [Guia de Contribuição](./CONTRIBUTING.md)
 
 ## 📊 Status do Projeto
 

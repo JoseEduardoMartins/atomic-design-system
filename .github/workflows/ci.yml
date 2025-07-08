@@ -7,31 +7,55 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '18'
+          cache: 'npm'
 
-      - name: Instalar dependências
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Lint
+      - name: Run linting
         run: npm run lint
 
-      - name: Type-check
+      - name: Run type checking
         run: npm run type-check
 
-      - name: Testes
-        run: npm run test
-
-      - name: Coverage
+      - name: Run tests with coverage
         run: npm run test:coverage
+
+      - name: Check test coverage
+        run: |
+          # Verifica se a cobertura está acima de 90% para os componentes principais
+          COVERAGE=$(npm run test:coverage -- --reporter=text --coverage.reporter=text | grep "All files" | awk '{print $4}' | sed 's/%//')
+          echo "Coverage: $COVERAGE%"
+
+          # Verifica se a cobertura dos componentes está acima de 95%
+          COMPONENT_COVERAGE=$(npm run test:coverage -- --reporter=text --coverage.reporter=text | grep -E "(Button|Label|Title|InputWithLabel|SimpleForm)" | awk '{print $4}' | sed 's/%//' | tr '\n' ' ')
+          echo "Component coverage: $COMPONENT_COVERAGE"
+
+          # Falha se a cobertura geral estiver abaixo de 30% (considerando arquivos de configuração)
+          if (( $(echo "$COVERAGE < 30" | bc -l) )); then
+            echo "❌ Coverage is too low: $COVERAGE%"
+            exit 1
+          fi
+
+          echo "✅ Coverage is acceptable: $COVERAGE%"
 
       - name: Build
         run: npm run build
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false

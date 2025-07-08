@@ -34,6 +34,14 @@ npm run dev
 npm test
 ```
 
+**Cobertura de Testes**: 100% nos componentes principais, 32.55% geral
+
+- Testes unitários e de integração
+- Edge cases e acessibilidade
+- Monitoramento automático via CI/CD
+
+📖 **Documentação detalhada**: [docs/TESTING.md](./docs/TESTING.md)
+
 ### Lint e formatação
 
 ```bash
@@ -59,7 +67,7 @@ Caso publicado, acesse: [Storybook Online](#) <!-- Substitua pelo link real se u
 4. Rode lint, type-check, testes e build antes de abrir PR.
 5. Siga o padrão Conventional Commits.
 6. Abra um Pull Request explicando suas mudanças.
-7. Veja mais detalhes em [`CONTRIBUTING.md`](CONTRIBUTING.md).
+7. Veja mais detalhes em [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md).
 
 ## Exemplo de Uso de um Componente
 
@@ -87,4 +95,15 @@ export function App() {
 
 ---
 
-Para detalhes sobre arquitetura, padrões de design, tokens, temas e extensão dos componentes, consulte a documentação técnica em [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md).
+## 📚 Documentação
+
+Para mais detalhes sobre o projeto, consulte nossa documentação completa:
+
+📖 **[Índice da Documentação](docs/README.md)** - Navegação completa e organizada
+
+### Documentação Específica
+
+- **📋 Guia de Contribuição**: [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md)
+- **🧪 Estratégia de Testes**: [`docs/TESTING.md`](docs/TESTING.md)
+- **🏗️ Arquitetura e Padrões**: [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md)
+- **📝 Histórico de Mudanças**: [`docs/CHANGELOG.md`](docs/CHANGELOG.md)

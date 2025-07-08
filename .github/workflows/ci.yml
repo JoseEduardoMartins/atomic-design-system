@@ -33,17 +33,28 @@ jobs:
 
       - name: Check test coverage
         run: |
-          # Verifica se a cobertura está acima de 90% para os componentes principais
-          COVERAGE=$(npm run test:coverage -- --reporter=text --coverage.reporter=text | grep "All files" | awk '{print $4}' | sed 's/%//')
-          echo "Coverage: $COVERAGE%"
+          echo "📊 Checking test coverage..."
 
-          # Verifica se a cobertura dos componentes está acima de 95%
-          COMPONENT_COVERAGE=$(npm run test:coverage -- --reporter=text --coverage.reporter=text | grep -E "(Button|Label|Title|InputWithLabel|SimpleForm)" | awk '{print $4}' | sed 's/%//' | tr '\n' ' ')
-          echo "Component coverage: $COMPONENT_COVERAGE"
+          # Executa testes com cobertura e captura a saída
+          COVERAGE_OUTPUT=$(npm run test:coverage -- --reporter=text --coverage.reporter=text 2>&1)
+          echo "$COVERAGE_OUTPUT"
 
-          # Falha se a cobertura geral estiver abaixo de 30% (considerando arquivos de configuração)
+          # Extrai a cobertura geral
+          COVERAGE=$(echo "$COVERAGE_OUTPUT" | grep "All files" | awk '{print $4}' | sed 's/%//')
+          echo "📈 Overall coverage: $COVERAGE%"
+
+          # Extrai cobertura dos componentes principais
+          COMPONENT_COVERAGE=$(echo "$COVERAGE_OUTPUT" | grep -E "(Button|Label|Title|InputWithLabel|SimpleForm)" | awk '{print $4}' | sed 's/%//' | tr '\n' ' ')
+          echo "🧩 Component coverage: $COMPONENT_COVERAGE"
+
+          # Verifica se a cobertura geral está acima do mínimo
+          if [ -z "$COVERAGE" ]; then
+            echo "❌ Could not extract coverage information"
+            exit 1
+          fi
+
           if (( $(echo "$COVERAGE < 30" | bc -l) )); then
-            echo "❌ Coverage is too low: $COVERAGE%"
+            echo "❌ Coverage is too low: $COVERAGE% (minimum: 30%)"
             exit 1
           fi
 
@@ -59,3 +70,10 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: false
+
+      - name: Show build artifacts
+        run: |
+          echo "📦 Build artifacts:"
+          ls -la dist/
+          echo "📊 Coverage artifacts:"
+          ls -la coverage/

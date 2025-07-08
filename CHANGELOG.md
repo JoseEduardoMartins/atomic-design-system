@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.3...v1.2.0) (2025-07-08)
+
+
+### Features
+
+* centraliza tokens de design (cores, espaçamento, tipografia) e documenta suporte a temas light/dark ([63bd311](https://github.com/JoseEduardoMartins/atomic-design-system/commit/63bd31170ea4f507ec08fe019e22643b9603a0c8))
+
 ## [1.1.3](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.1.2...v1.1.3) (2025-06-20)
 
 

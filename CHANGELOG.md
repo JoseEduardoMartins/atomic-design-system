@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.3.0...v1.3.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* restaura configuração do Vitest para ambiente de testes React ([52841a1](https://github.com/JoseEduardoMartins/atomic-design-system/commit/52841a1e7efa169975f79849bd094879d8354935))
+
 # [1.3.0](https://github.com/JoseEduardoMartins/atomic-design-system/compare/v1.2.0...v1.3.0) (2025-07-08)
 
 

@@ -114,6 +114,44 @@ SimpleForm/
 - **Helpers:** Funções utilitárias possuem cobertura total de testes.
 - **Integração:** Organisms testam a integração entre componentes menores.
 
+## Tokens de Design e Temas
+
+O design system centraliza os principais tokens de design em arquivos CSS, facilitando a manutenção, consistência visual e suporte a temas.
+
+- **Cores:** Definidas em `src/styles/colors.css` usando variáveis CSS, com suporte a temas light e dark via classes (`:root` e `.dark`).
+- **Espaçamento:** Tokens em `src/styles/spacing.css` (ex: `--space-4: 16px;`).
+- **Tipografia:** Tokens em `src/styles/tokens-typography.css` (fontes, tamanhos, pesos, line-heights).
+- **Scrollbars:** Customizadas via tokens em `src/styles/scrollbar.css`.
+
+Esses tokens são importados globalmente em `src/styles/tailwind.css` e integrados ao Tailwind via `tailwind.config.js`, permitindo o uso de utilitários como `bg-primary`, `text-gray-700`, `p-[var(--space-4)]`, etc.
+
+### Suporte a Temas (Light/Dark)
+
+- O tema padrão é definido em `:root` e o tema dark na classe `.dark`.
+- Para alternar o tema, basta adicionar ou remover a classe `dark` no elemento `<html>` ou `<body>`.
+- Todos os componentes devem usar apenas tokens (ex: `var(--primary)`) para garantir compatibilidade com temas.
+
+**Exemplo de alternância de tema:**
+
+```js
+// Alternar tema via JavaScript
+// document.documentElement.classList.toggle('dark');
+```
+
+**Exemplo de uso de tokens em componentes:**
+
+```tsx
+<button
+  style={{
+    background: 'var(--primary)',
+    color: 'var(--foreground)',
+    padding: 'var(--space-4)'
+  }}
+>
+  Botão temático
+</button>
+```
+
 ---
 
 Para dúvidas ou sugestões, contribua via Pull Request ou abra uma issue no repositório.

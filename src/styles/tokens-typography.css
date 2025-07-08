@@ -1,0 +1,21 @@
+:root {
+  --font-family-sans: 'Inter', 'Roboto', Arial, sans-serif;
+  --font-family-mono: 'Fira Mono', 'Menlo', 'Monaco', monospace;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-xs: 1.1;
+  --line-height-sm: 1.25;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.75;
+}

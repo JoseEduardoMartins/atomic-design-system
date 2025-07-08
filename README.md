@@ -1,3 +1,5 @@
+[![CI](https://github.com/JoseEduardoMartins/atomic-design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/JoseEduardoMartins/atomic-design-system/actions/workflows/ci.yml)
+
 # Atomic Design System
 
 Um sistema de design modular baseado em React, TypeScript e Vite, estruturado segundo o padrão Atomic Design. O objetivo é fornecer uma base escalável e reutilizável de componentes para acelerar o desenvolvimento de interfaces consistentes e acessíveis.

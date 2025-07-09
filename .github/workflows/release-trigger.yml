@@ -1,0 +1,79 @@
+name: Release Trigger
+
+on:
+  workflow_run:
+    workflows: ['CI']
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # Garantir que apenas um release seja executado por vez
+    concurrency:
+      group: release-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check if release is needed
+        id: check-release
+        run: |
+          echo "🔍 Verificando se um release é necessário..."
+
+          # Verificar se há commits que geram releases desde o último tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+          if [ -z "$LAST_TAG" ]; then
+            echo "🏷️  Nenhum tag encontrado, verificando todos os commits..."
+            RELEASE_COMMITS=$(git log --oneline --grep="^feat:" --grep="^fix:" --grep="^BREAKING CHANGE:" | wc -l)
+          else
+            echo "🏷️  Último tag: $LAST_TAG"
+            RELEASE_COMMITS=$(git log --oneline $LAST_TAG..HEAD --grep="^feat:" --grep="^fix:" --grep="^BREAKING CHANGE:" | wc -l)
+          fi
+
+          echo "📝 Commits que geram releases: $RELEASE_COMMITS"
+
+          if [ "$RELEASE_COMMITS" -gt 0 ]; then
+            echo "✅ Release necessário"
+            echo "needs-release=true" >> $GITHUB_OUTPUT
+          else
+            echo "⏭️  Nenhum release necessário"
+            echo "needs-release=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run semantic-release
+        if: steps.check-release.outputs.needs-release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          echo "🚀 Executando semantic-release..."
+          npx semantic-release
+
+      - name: Skip release
+        if: steps.check-release.outputs.needs-release == 'false'
+        run: |
+          echo "⏭️  Pulando release - nenhum commit que gere release encontrado"
+          echo "📝 Últimos commits:"
+          git log --oneline -5

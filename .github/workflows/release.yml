@@ -8,8 +8,14 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    # Garantir que apenas um release seja executado por vez
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN }}
@@ -19,16 +25,166 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify package.json
+        run: |
+          echo "📦 Verificando package.json..."
+          echo "Nome do pacote: $(npm run --silent echo-name)"
+          echo "Versão atual: $(npm run --silent echo-version)"
+          echo "Arquivos incluídos: $(npm run --silent echo-files)"
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run type checking
+        run: npm run type-check
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Check test coverage
+        run: |
+          echo "📊 Verificando cobertura de testes..."
+
+          # Executa testes com cobertura e captura a saída
+          COVERAGE_OUTPUT=$(npm run test:coverage -- --reporter=text --coverage.reporter=text 2>&1)
+          echo "$COVERAGE_OUTPUT"
+
+          # Extrai a cobertura geral
+          COVERAGE=$(echo "$COVERAGE_OUTPUT" | grep "All files" | awk '{print $4}' | sed 's/%//')
+          echo "📈 Overall coverage: $COVERAGE%"
+
+          # Verifica se a cobertura está acima do mínimo
+          if [ -z "$COVERAGE" ]; then
+            echo "❌ Could not extract coverage information"
+            exit 1
+          fi
+
+          if (( $(echo "$COVERAGE < 30" | bc -l) )); then
+            echo "❌ Coverage is too low: $COVERAGE% (minimum: 30%)"
+            exit 1
+          fi
+
+          echo "✅ Coverage is acceptable: $COVERAGE%"
+
       - name: Build project
         run: npm run build
+
+      - name: Verify build artifacts
+        run: |
+          echo "📦 Verificando artifacts de build..."
+          ls -la dist/
+
+          # Verificar se os arquivos principais foram criados
+          if [ ! -f "dist/atomic-design-system.es.js" ]; then
+            echo "❌ ES module não encontrado"
+            exit 1
+          fi
+
+          if [ ! -f "dist/atomic-design-system.cjs.js" ]; then
+            echo "❌ CommonJS module não encontrado"
+            exit 1
+          fi
+
+          if [ ! -f "dist/atomic-design-system.css" ]; then
+            echo "❌ CSS não encontrado"
+            exit 1
+          fi
+
+          echo "✅ Todos os artifacts de build estão presentes"
+
+      - name: Test package locally
+        run: |
+          echo "🧪 Testando criação do pacote localmente..."
+          npm pack
+
+          PACKAGE_FILE=$(ls jose-eduardo-martins-atomic-design-system-*.tgz | head -1)
+          echo "📦 Pacote criado: $PACKAGE_FILE"
+
+          # Verificar conteúdo do pacote
+          echo "📋 Conteúdo do pacote:"
+          tar -tzf "$PACKAGE_FILE"
+
+          # Limpar arquivo temporário
+          rm "$PACKAGE_FILE"
+
+          echo "✅ Teste de pacote concluído"
+
+      - name: Verify semantic-release configuration
+        run: |
+          echo "🔧 Verificando configuração do semantic-release..."
+          cat .releaserc.json
+
+          # Verificar se todos os plugins estão instalados
+          echo "📦 Plugins instalados:"
+          npm list @semantic-release/commit-analyzer
+          npm list @semantic-release/release-notes-generator
+          npm list @semantic-release/changelog
+          npm list @semantic-release/npm
+          npm list @semantic-release/git
+          npm list @semantic-release/github
+
+      - name: Check recent commits
+        run: |
+          echo "📝 Últimos commits:"
+          git log --oneline -10
+
+          echo "🏷️  Tags existentes:"
+          git tag --sort=-version:refname | head -5
 
       - name: Semantic Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          echo "🚀 Iniciando semantic-release..."
+          echo "🔑 GitHub Token: ${GH_TOKEN:0:10}..."
+          echo "🔑 NPM Token: ${NPM_TOKEN:0:10}..."
+
+          # Executar semantic-release com debug
+          DEBUG=semantic-release:* npx semantic-release
+
+      - name: Verify release artifacts
+        if: success()
+        run: |
+          echo "✅ Verificando artifacts do release..."
+
+          # Verificar se o CHANGELOG foi atualizado
+          if [ -f "docs/CHANGELOG.md" ]; then
+            echo "📝 CHANGELOG.md encontrado"
+            echo "Últimas linhas do CHANGELOG:"
+            tail -10 docs/CHANGELOG.md
+          else
+            echo "⚠️  CHANGELOG.md não encontrado"
+          fi
+
+          # Verificar se a versão foi atualizada
+          echo "📦 Versão atual: $(npm run --silent echo-version)"
+
+      - name: Show release summary
+        if: success()
+        run: |
+          echo "🎉 Release concluído com sucesso!"
+          echo "📦 Package: @jose-eduardo-martins/atomic-design-system"
+          echo "🏷️  Versão: $(npm run --silent echo-version)"
+          echo "📝 CHANGELOG: docs/CHANGELOG.md"
+          echo "🔗 NPM: https://www.npmjs.com/package/@jose-eduardo-martins/atomic-design-system"
+          echo "🔗 GitHub: https://github.com/JoseEduardoMartins/atomic-design-system/releases"
+
+      - name: Handle release failure
+        if: failure()
+        run: |
+          echo "❌ Release falhou!"
+          echo "🔍 Verifique os logs acima para identificar o problema"
+          echo "📋 Possíveis causas:"
+          echo "   - Tokens de autenticação inválidos"
+          echo "   - Versão já existe no npm"
+          echo "   - Commits não seguem Conventional Commits"
+          echo "   - Erro de build ou testes"
+          echo "🔗 Documentação: docs/RELEASE.md"

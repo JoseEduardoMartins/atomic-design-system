@@ -11,8 +11,10 @@ O projeto utiliza **semantic-release** para automatizar completamente o processo
 ### Arquivos de Configuração
 
 - **`.releaserc.json`**: Configuração principal do semantic-release
-- **`.github/workflows/release.yml`**: Workflow de CI/CD para releases
+- **`.github/workflows/release.yml`**: Workflow principal de release (robusto)
+- **`.github/workflows/release-trigger.yml`**: Workflow que só executa quando necessário
 - **`package.json`**: Scripts e configurações do npm
+- **`scripts/test-release.sh`**: Script para teste local do processo
 
 ### Plugins Utilizados
 
@@ -82,14 +84,16 @@ git push origin feat/new-component
 
 Quando o PR é mergeado na `main`:
 
-1. **GitHub Actions** executa o workflow de release
-2. **semantic-release** analisa os commits desde o último release
-3. **Determina o tipo de release** (patch/minor/major)
-4. **Atualiza version** no `package.json`
-5. **Gera CHANGELOG.md** com as mudanças
-6. **Cria tag** no Git
-7. **Publica no npm** registry
-8. **Cria release** no GitHub
+1. **CI/CD Pipeline** executa testes e verificações de qualidade
+2. **Release Trigger** verifica se há commits que geram releases
+3. **semantic-release** analisa os commits desde o último release
+4. **Determina o tipo de release** (patch/minor/major)
+5. **Executa verificações adicionais** (build, testes, cobertura)
+6. **Atualiza version** no `package.json`
+7. **Gera CHANGELOG.md** com as mudanças
+8. **Cria tag** no Git
+9. **Publica no npm** registry
+10. **Cria release** no GitHub
 
 ## 🧪 Teste Local
 
@@ -128,6 +132,30 @@ npx semantic-release --help
 # Teste completo do processo (recomendado)
 npm run test:release
 ```
+
+## 🔧 Workflows de Release
+
+### Workflow Principal (`release.yml`)
+
+O workflow principal executa verificações completas antes do release:
+
+- ✅ **Verificação de package.json** - Valida configurações do pacote
+- ✅ **Linting** - Verifica qualidade do código
+- ✅ **Type checking** - Valida tipos TypeScript
+- ✅ **Testes com cobertura** - Garante qualidade e cobertura mínima
+- ✅ **Build verification** - Confirma que o build funciona
+- ✅ **Package testing** - Testa criação do pacote localmente
+- ✅ **Configuration verification** - Valida plugins do semantic-release
+- ✅ **Release execution** - Executa o release com debug
+- ✅ **Artifact verification** - Confirma que o release foi bem-sucedido
+
+### Workflow Trigger (`release-trigger.yml`)
+
+Workflow inteligente que só executa quando necessário:
+
+- 🔍 **Análise de commits** - Verifica se há commits que geram releases
+- ⏭️ **Skip inteligente** - Pula execução quando não há mudanças
+- 🚀 **Execução otimizada** - Reduz custos e tempo de CI/CD
 
 ## 🔐 Secrets Necessários
 

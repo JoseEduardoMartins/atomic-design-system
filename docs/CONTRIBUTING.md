@@ -1,5 +1,13 @@
 # Guia de Contribuição
 
+> **Templates disponíveis:**
+>
+> - [Template de Issue: Bug Report](../.github/ISSUE_TEMPLATE/bug_report.md)
+> - [Template de Issue: Feature Request](../.github/ISSUE_TEMPLATE/feature_request.md)
+> - [Template de Pull Request](../.github/PULL_REQUEST_TEMPLATE.md)
+>
+> Ao abrir uma issue ou pull request, utilize os templates disponíveis para garantir clareza e padronização.
+
 Obrigado por contribuir com o Atomic Design System! Siga estas orientações para garantir qualidade, consistência e facilidade de manutenção.
 
 ## Como contribuir

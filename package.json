@@ -27,6 +27,7 @@
     "commit": "cz",
     "semantic-release": "semantic-release",
     "test:release": "./scripts/test-release.sh",
+    "sync-version": "./scripts/sync-version.sh",
     "echo-name": "node -p \"require('./package.json').name\"",
     "echo-version": "node -p \"require('./package.json').version\"",
     "echo-files": "node -p \"require('./package.json').files.join(', ')\""

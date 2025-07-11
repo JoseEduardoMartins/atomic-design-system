@@ -137,18 +137,11 @@ jobs:
           echo "🏷️  Tags existentes:"
           git tag --sort=-version:refname | head -5
 
-      - name: Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Skip semantic-release (handled by release-trigger.yml)
         run: |
-          echo "🚀 Iniciando semantic-release..."
-          echo "🔑 GitHub Token: ${GH_TOKEN:0:10}..."
-          echo "🔑 NPM Token: ${NPM_TOKEN:0:10}..."
-
-          # Executar semantic-release com debug
-          DEBUG=semantic-release:* npx semantic-release
+          echo "⏭️  Pulando semantic-release neste workflow"
+          echo "📋 O release será executado pelo workflow release-trigger.yml"
+          echo "🔗 Isso evita execução dupla do semantic-release"
 
       - name: Verify release artifacts
         if: success()

@@ -51,6 +51,28 @@ O semantic-release atualiza automaticamente:
 
 ## 🚀 Release Automatizado
 
+### **Workflows de Release**
+
+O projeto usa **dois workflows** para evitar conflitos:
+
+1. **`release.yml`** (Principal):
+
+   - Executa em push para main
+   - Faz verificações completas (testes, build, etc.)
+   - **NÃO executa semantic-release** (evita duplicação)
+
+2. **`release-trigger.yml`** (Release):
+   - Executa após CI bem-sucedido
+   - Verifica se há commits que geram releases
+   - **Executa semantic-release** apenas quando necessário
+
+### **Por que dois workflows?**
+
+- ✅ **Separação de responsabilidades**: CI vs Release
+- ✅ **Evita execução dupla**: semantic-release roda apenas uma vez
+- ✅ **Melhor controle**: Release só executa após CI passar
+- ✅ **Debugging mais fácil**: Logs separados para cada etapa
+
 ### **Triggers de Release**
 
 - **Patch** (`1.4.0` → `1.4.1`): commits `fix:`
@@ -86,7 +108,8 @@ git commit -m "style: ajustar espaçamento"
 ### **Arquivos de Configuração**
 
 - **`.releaserc.json`**: Configuração principal do semantic-release
-- **`.github/workflows/release.yml`**: Workflow de release no GitHub Actions
+- **`.github/workflows/release.yml`**: Workflow de CI (sem semantic-release)
+- **`.github/workflows/release-trigger.yml`**: Workflow de release
 - **`scripts/sync-version.sh`**: Script de sincronização
 
 ### **Plugins Utilizados**
@@ -127,6 +150,17 @@ npm run sync-version
 1. Commit segue Conventional Commits?
 2. Está na branch `main`?
 3. CI/CD passou nos testes?
+
+### **Execução dupla do semantic-release**
+
+**Sintomas**: Erro de versão já existente no npm.
+
+**Causa**: Múltiplos workflows executando semantic-release.
+
+**Solução**:
+
+- Verificar se apenas `release-trigger.yml` executa semantic-release
+- `release.yml` deve apenas fazer CI, não release
 
 ## 📋 Checklist de Release
 

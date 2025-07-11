@@ -36,7 +36,7 @@ jobs:
           echo "📊 Checking test coverage..."
 
           # Executa testes com cobertura e captura a saída
-          COVERAGE_OUTPUT=$(npm run test:coverage -- --reporter=text --coverage.reporter=text 2>&1)
+          COVERAGE_OUTPUT=$(npm run test:coverage 2>&1)
           echo "$COVERAGE_OUTPUT"
 
           # Extrai a cobertura geral

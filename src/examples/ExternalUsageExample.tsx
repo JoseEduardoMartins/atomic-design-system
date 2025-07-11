@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '../components/atoms/Button';
 import { Label } from '../components/atoms/Label';
 import { Title } from '../components/atoms/Title';

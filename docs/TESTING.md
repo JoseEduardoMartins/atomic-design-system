@@ -6,21 +6,21 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
 
 ### Cobertura Atual
 
-- **Cobertura Geral**: 32.55%
+- **Cobertura Geral**: 30.91%
 - **Cobertura dos Componentes**: 100% (Button, Label, Title, InputWithLabel, SimpleForm)
 - **Cobertura dos Helpers**: 100% (mergeClassNames)
 
 ### Metas de Cobertura
 
-- **Componentes**: Mínimo 95%
-- **Helpers**: Mínimo 90%
-- **Cobertura Geral**: Mínimo 30% (considerando arquivos de configuração)
+- **Componentes**: Mínimo 95% ✅
+- **Helpers**: Mínimo 90% ✅
+- **Cobertura Geral**: Mínimo 30% ✅
 
 ## 🧪 Tipos de Testes
 
 ### 1. Testes Unitários
 
-#### Atoms
+#### **Atoms**
 
 - **Button**: 10 testes
 
@@ -46,7 +46,7 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
   - Diferentes tipos de conteúdo
   - Acessibilidade como heading
 
-#### Molecules
+#### **Molecules**
 
 - **InputWithLabel**: 14 testes
   - Renderização básica
@@ -56,7 +56,7 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
   - Props adicionais
   - Validação de entrada
 
-#### Organisms
+#### **Organisms**
 
 - **SimpleForm**: 12 testes
   - Fluxos completos de usuário
@@ -65,7 +65,7 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
   - Integração entre componentes
   - Estados do formulário
 
-#### Helpers
+#### **Helpers**
 
 - **mergeClassNames**: 18 testes
   - Combinação de classes
@@ -76,7 +76,7 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
 
 ### 2. Testes de Integração
 
-#### Integração entre Componentes
+#### **Integração entre Componentes**
 
 - **Atoms**: 2 testes
 
@@ -92,7 +92,7 @@ Este documento descreve a estratégia de testes implementada no Atomic Design Sy
   - SimpleForm integrando todos os componentes
   - Acessibilidade entre componentes
 
-#### Fluxos de Usuário
+#### **Fluxos de Usuário**
 
 - **Fluxos Completos**: 2 testes
 
@@ -183,99 +183,232 @@ O GitHub Actions monitora automaticamente:
 
 ```bash
 # Executar todos os testes
-npm run test
+npm test
 
-# Executar testes com cobertura
-npm run test:coverage
-
-# Executar testes em modo watch
+# Modo watch para desenvolvimento
 npm run test:watch
 
-# Executar testes específicos
-npm run test Button
+# Interface visual para testes
+npm run test:ui
+
+# Cobertura de testes
+npm run test:coverage
+
+# Interface visual com cobertura
+npm run test:coverage:ui
 ```
 
-## 🚀 Boas Práticas
+## 🧪 Exemplos de Testes
 
-### Estrutura de Testes
-
-1. **Describe** para agrupar testes relacionados
-2. **It** para casos de teste específicos
-3. **Setup** e **teardown** quando necessário
-4. **Nomes descritivos** em português
-
-### Padrões de Teste
+### Teste Unitário - Button
 
 ```typescript
-describe('ComponentName', () => {
-  it('deve renderizar corretamente', () => {
-    render(<Component />);
-    expect(screen.getByRole('button')).toBeInTheDocument();
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Button } from './Button';
+
+describe('Button', () => {
+  it('renders with default props', () => {
+    render(<Button>Click me</Button>);
+    expect(
+      screen.getByRole('button', { name: /click me/i })
+    ).toBeInTheDocument();
   });
 
-  it('deve chamar callback quando clicado', () => {
+  it('handles click events', () => {
     const handleClick = vi.fn();
-    render(<Component onClick={handleClick} />);
+    render(<Button onClick={handleClick}>Click me</Button>);
+
     fireEvent.click(screen.getByRole('button'));
-    expect(handleClick).toHaveBeenCalled();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('applies variant styles', () => {
+    render(<Button variant="secondary">Secondary</Button>);
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('border', 'border-border');
   });
 });
 ```
 
-### Assertions Recomendadas
+### Teste de Integração - SimpleForm
 
-- `toBeInTheDocument()` para verificar presença
-- `toHaveClass()` para verificar classes CSS
-- `toHaveAttribute()` para verificar atributos
-- `toHaveValue()` para verificar valores de inputs
-- `toBeDisabled()` para verificar estados
+```typescript
+import { render, screen, fireEvent } from '@testing-library/react';
+import { SimpleForm } from './SimpleForm';
+
+describe('SimpleForm', () => {
+  it('submits form with valid data', () => {
+    render(<SimpleForm />);
+
+    const input = screen.getByLabelText(/nome/i);
+    const submitButton = screen.getByRole('button', { name: /enviar/i });
+
+    fireEvent.change(input, { target: { value: 'John Doe' } });
+    fireEvent.click(submitButton);
+
+    expect(screen.getByTestId('success-msg')).toBeInTheDocument();
+  });
+});
+```
+
+### Teste de Helper - mergeClassNames
+
+```typescript
+import { mergeClassNames } from './mergeClassNames';
+
+describe('mergeClassNames', () => {
+  it('combines multiple class strings', () => {
+    const result = mergeClassNames('bg-blue-500', 'text-white', 'p-4');
+    expect(result).toBe('bg-blue-500 text-white p-4');
+  });
+
+  it('removes duplicate Tailwind classes', () => {
+    const result = mergeClassNames(
+      'bg-blue-500 text-white',
+      'bg-red-500 text-black'
+    );
+    expect(result).toBe('bg-red-500 text-black');
+  });
+});
+```
+
+## 🎯 Boas Práticas
+
+### 1. Estrutura de Testes
+
+```typescript
+describe('ComponentName', () => {
+  // Testes de renderização
+  describe('rendering', () => {
+    it('renders with default props', () => {
+      // teste
+    });
+  });
+
+  // Testes de interação
+  describe('interactions', () => {
+    it('handles user interactions', () => {
+      // teste
+    });
+  });
+
+  // Testes de acessibilidade
+  describe('accessibility', () => {
+    it('has proper ARIA attributes', () => {
+      // teste
+    });
+  });
+});
+```
+
+### 2. Queries Recomendadas
+
+```typescript
+// Prioridade 1: Queries acessíveis
+getByRole('button', { name: /submit/i });
+getByLabelText(/email/i);
+getByPlaceholderText(/enter email/i);
+
+// Prioridade 2: Queries semânticas
+getByText(/submit/i);
+getByDisplayValue('john@example.com');
+
+// Prioridade 3: Queries de teste
+getByTestId('submit-button');
+```
+
+### 3. Assertions
+
+```typescript
+// Verificar presença
+expect(element).toBeInTheDocument();
+
+// Verificar classes
+expect(element).toHaveClass('bg-blue-500');
+
+// Verificar atributos
+expect(element).toHaveAttribute('type', 'submit');
+
+// Verificar texto
+expect(element).toHaveTextContent('Submit');
+
+// Verificar estado
+expect(element).toBeDisabled();
+```
 
 ## 🔍 Debugging de Testes
 
 ### Comandos Úteis
 
 ```bash
-# Executar teste específico com debug
-npm run test Button -- --reporter=verbose
+# Executar teste específico
+npm test -- Button.test.tsx
 
-# Executar com console.log
-DEBUG=* npm run test
+# Executar com debug
+npm test -- --reporter=verbose
 
-# Executar com coverage detalhada
-npm run test:coverage -- --reporter=text
+# Executar com UI
+npm run test:ui
+
+# Gerar relatório de cobertura
+npm run test:coverage
 ```
 
-### Ferramentas de Debug
+### Debugging no Código
 
-- `screen.debug()` para imprimir DOM
-- `screen.logTestingPlaygroundURL()` para URL do playground
-- `fireEvent` para simular interações
-- `waitFor` para operações assíncronas
+```typescript
+// Usar screen.debug() para ver o DOM
+screen.debug();
 
-## 📝 Manutenção
+// Usar screen.debug(element) para elemento específico
+screen.debug(screen.getByRole('button'));
 
-### Adicionando Novos Testes
+// Usar prettyDOM para formatação
+import { prettyDOM } from '@testing-library/dom';
+console.log(prettyDOM(element));
+```
 
-1. Criar arquivo `ComponentName.test.tsx`
-2. Seguir estrutura padrão
-3. Testar edge cases
-4. Verificar acessibilidade
-5. Executar cobertura
+## 📊 Relatórios de Cobertura
 
-### Atualizando Testes
+### Interpretando Relatórios
 
-1. Verificar se testes ainda fazem sentido
-2. Atualizar expectativas se necessário
-3. Manter cobertura alta
-4. Documentar mudanças
+```
+File                              | % Stmts | % Branch | % Funcs | % Lines
+Button.tsx                        |     100 |      100 |     100 |     100
+SimpleForm.tsx                    |     100 |      100 |     100 |     100
+mergeClassNames.ts                |     100 |      100 |     100 |     100
+```
 
-## 🎉 Resultados
+- **Statements**: Porcentagem de linhas executadas
+- **Branch**: Porcentagem de branches (if/else) executadas
+- **Functions**: Porcentagem de funções executadas
+- **Lines**: Porcentagem de linhas executadas
 
-Com esta estratégia de testes, garantimos:
+### Identificando Gaps
 
-- ✅ **100% de cobertura** nos componentes principais
-- ✅ **Testes robustos** para edge cases
-- ✅ **Integração testada** entre componentes
-- ✅ **Acessibilidade validada**
-- ✅ **Monitoramento contínuo** via CI/CD
-- ✅ **Documentação clara** para manutenção
+1. **Branches não testadas**: Adicionar testes para diferentes condições
+2. **Funções não testadas**: Verificar se há funções mortas ou não utilizadas
+3. **Linhas não testadas**: Adicionar casos de teste para cobrir edge cases
+
+## 🚀 Próximos Passos
+
+### Melhorias Planejadas
+
+1. **Testes E2E**: Adicionar Playwright para testes end-to-end
+2. **Testes de Performance**: Medir performance dos componentes
+3. **Testes de Regressão Visual**: Integrar com Chromatic ou similar
+4. **Testes de Acessibilidade**: Adicionar axe-core para testes de a11y
+
+### Métricas de Qualidade
+
+- **Tempo de execução**: < 30 segundos
+- **Cobertura mínima**: 95% para componentes
+- **Testes por componente**: Mínimo 8 testes
+- **Testes de integração**: Mínimo 2 por organismo
+
+## 📚 Recursos Adicionais
+
+- [Testing Library Docs](https://testing-library.com/docs/)
+- [Vitest Documentation](https://vitest.dev/)
+- [Jest DOM Matchers](https://github.com/testing-library/jest-dom)
+- [React Testing Best Practices](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)

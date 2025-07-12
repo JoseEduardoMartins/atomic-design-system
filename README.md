@@ -1,3 +1,9 @@
+# SnackManager Design System
+
+Biblioteca central de componentes visuais e padrões de interface utilizados em todas as aplicações do sistema. Garante consistência visual, reutilização de elementos e padronização da experiência do usuário em todo o ecossistema SnackManager.
+
+
+
 [![CI](https://github.com/JoseEduardoMartins/atomic-design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/JoseEduardoMartins/atomic-design-system/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@jose-eduardo-martins/atomic-design-system.svg)](https://www.npmjs.com/package/@jose-eduardo-martins/atomic-design-system)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

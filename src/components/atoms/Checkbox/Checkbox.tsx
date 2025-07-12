@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import { checkboxVariants } from './Checkbox.style';
 import { mergeClassNames } from '../../../helpers';
 import type { CheckboxProps } from './Checkbox.type';

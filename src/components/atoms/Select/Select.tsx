@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { selectVariants } from './Select.style';
 import { mergeClassNames } from '../../../helpers';
 import type { SelectProps } from './Select.type';

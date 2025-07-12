@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { inputVariants } from './Input.style';
 import { mergeClassNames } from '../../../helpers';
 import type { InputProps } from './Input.type';

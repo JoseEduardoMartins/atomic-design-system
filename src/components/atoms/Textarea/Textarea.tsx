@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { textareaVariants } from './Textarea.style';
 import { mergeClassNames } from '../../../helpers';
 import type { TextareaProps } from './Textarea.type';

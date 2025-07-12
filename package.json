@@ -1,6 +1,6 @@
 {
   "name": "@jose-eduardo-martins/atomic-design-system",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": false,
   "publishConfig": {
     "access": "public"
